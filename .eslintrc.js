@@ -3,10 +3,10 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-    extends: ["metarhia"],
+  extends: ['metarhia'],
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
   rules: {},
 };
