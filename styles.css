@@ -36,6 +36,10 @@ body {
     position: absolute;
 }
 
+header {
+    min-width: 500px;
+}
+
 img {
     border: var(--border-width) solid var(--border-color);
 }
@@ -110,6 +114,10 @@ img {
 
 .side-bg {
     background-color: var(--side-element-background);
+}
+
+.light-scheme-bg {
+    background-color: var(--light-scheme-color);
 }
 
 /* indents */
