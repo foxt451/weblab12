@@ -125,8 +125,24 @@ img {
     margin: var(--def-fixed-indent);
 }
 
+.def-fixed-left-margin {
+    margin: 0 0 0  var(--def-fixed-indent);
+}
+
+.def-fixed-right-margin {
+    margin: 0 var(--def-fixed-indent) 0 0;
+}
+
 .minor-fixed-margin {
     margin: var(--minor-fixed-indent);
+}
+
+.minor-fixed-left-margin {
+    margin: 0 0 0 var(--minor-fixed-indent);
+}
+
+.minor-fixed-right-margin {
+    margin: 0 var(--minor-fixed-indent) 0 0;
 }
 
 .def-fixed-padding {
