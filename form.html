@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <base href="/C:/wamp64/www/web1/weblab13/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/basicStyles.css" />
+    <link rel="stylesheet" href="styles/formStyles.css" />
+    <title>Моя сторінка</title>
+</head>
+<body class="stack-column stack-cross-stretch">
+    <header class="top-sticky bg-fixed-el stack-row">
+        <div class="
+          light-scheme-bg
+          minor-fixed-margin minor-fixed-padding
+          stack-row stack-start
+        " id="switch1">
+            <h1 class="def-fixed-right-margin">Заголовок</h1>
+        </div>
+        <nav class="stack-row stack-end stack-cross-stretch dominant-section">
+            <a class="navbut stack-column stack-center"
+               href="index.html">
+                <span> Головна </span>
+            </a>
+            <a class="navbut minor-fixed-padding stack-column stack-center"
+               href="page2.html">
+                <span> Page 2 </span>
+            </a>
+            <a class="navbut minor-fixed-padding stack-column stack-center"
+               href="page3.html">
+                <span> Page 3 </span>
+            </a>
+            <a class="navbut minor-fixed-padding stack-column stack-center"
+               href="page4.html">
+                <span> Page 4 </span>
+            </a>
+            <a class="navbut minor-fixed-padding stack-column stack-center activelink"
+               href="form.html">
+                <span> Page Actions </span>
+            </a>
+        </nav>
+    </header>
+    <main class="stack-row dominant-section stack-cross-stretch">
+        <aside class="side-bg note-font-style">
+            <p class="def-fixed-margin">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+                ab illo inventore veritatis et quasi architecto beatae vitae dicta
+                sunt explicabo.
+            </p>
+            <p class="def-fixed-margin">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+                sequi nesciunt.
+            </p>
+        </aside>
+        <div class="stack-column">
+            <aside class="annotation-bg note-font-style def-fixed-padding">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+                ab illo inventore veritatis et quasi architecto beatae vitae dicta
+                sunt explicabo.
+            </aside>
+            <article class="stack-row main-el-bg dominant-section">
+                <div class="four-fifth-by-def def-fixed-padding stack-column stack-cross-center">
+                    <h3>
+                        Опитування
+                    </h3>
+                    <form class="def-fixed-padding">
+                        <h3>
+                            Programming experience
+                        </h3>
+                        <fieldset>
+                            <legend>Main programming language</legend>
+                            <br />
+
+                            <input type="radio" value="csharp" id="csharpMain" name="mainlang" />
+                            <label for="csharpMain">C#</label>
+                            <br />
+
+                            <input type="radio" value="cpp" id="cppMain" name="mainlang" />
+                            <label for="cppMain">C/C++</label>
+                            <br />
+
+                            <input type="radio" value="java" id="javaMain" name="mainlang" />
+                            <label for="javaMain">Java</label>
+                            <br />
+
+                            <input type="radio" value="python" id="pythonMain" name="mainlang" />
+                            <label for="pythonMain">Python</label>
+                            <br />
+
+                            <input type="radio" value="javascript" id="javascriptMain" name="mainlang" />
+                            <label for="javascriptMain">Javascript</label>
+                            <br />
+
+                            <input type="radio" value="asm" id="asmMain" name="mainlang" />
+                            <label for="asmMain">Assembler</label>
+                            <br />
+
+                            <input type="radio" value="other" id="otherMain" name="mainlang" />
+                            <label for="otherMain">Other</label>
+                            <br />
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Have you written literally anything in these languages (like adding two numbers)?</legend>
+                            <br />
+
+                            <input type="checkbox" value="lisp" id="lispUsed" name="usedlang" />
+                            <label for="lispUsed">LISP</label>
+                            <br />
+
+                            <input type="checkbox" value="pascal" id="pascalUsed" name="usedlang" />
+                            <label for="pascalUsed">Pascal</label>
+                            <br />
+
+                            <input type="checkbox" value="brainfuck" id="brainfuckUsed" name="usedlang" />
+                            <label for="brainfuckUsed">Brainfuck</label>
+                            <br />
+
+                            <input type="checkbox" value="basic" id="basicUsed" name="usedlang" />
+                            <label for="basicUsed">Basic</label>
+                            <br />
+
+                            <input type="checkbox" value="fortran" id="fortranUsed" name="usedlang" />
+                            <label for="fortranUsed">Fortran</label>
+                            <br />
+
+                            <input type="checkbox" value="asm" id="asmUsed" name="usedlang" />
+                            <label for="asmUsed">Assembler</label>
+                            <br />
+
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>What color do you most associate your main language with?</legend>
+                            <input type="color">
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>The person universally considered the first programmer in history?</legend>
+                            <select>
+                                <option value="ada">Ada Lovelace</option>
+                                <option value="alan">Alan Turing</option>
+                                <option value="albert">Albert Einstein</option>
+                                <option value="marie">Marie Curie</option>
+                            </select>
+                        </fieldset>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+
+                <aside class="side-bg note-font-style def-fixed-padding one-fifth-by-def">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                    accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                    quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium, totam rem
+                    aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis
+                    unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed
+                    ut perspiciatis unde omnis iste natus error sit voluptatem
+                    accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                    quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo.
+                </aside>
+            </article>
+        </div>
+    </main>
+    <footer class="minor-fixed-padding stack-row stack-end bg-fixed-el">
+        <div class="minor-fixed-padding light-scheme-bg stack-row" id="switch2">
+            <h2 class="def-fixed-right-margin">Кінець</h2>
+        </div>
+    </footer>
+</body>
+</html>
