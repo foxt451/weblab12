@@ -19,3 +19,8 @@ input[type='submit'] {
   display: block;
   padding: var(--minor-fixed-indent);
 }
+
+fieldset {
+  border-color: var(--dark-scheme-color);
+  border-width: 1px;
+}

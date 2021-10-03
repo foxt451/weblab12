@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/basicStyles.css" />
     <link rel="stylesheet" href="styles/formStyles.css" />
+    <script src="node_modules/chart.js/dist/chart.js" defer></script>
+    <script src="scripts/populateStats.js" defer></script>
     <title>Моя сторінка</title>
   </head>
   <body class="stack-column stack-cross-stretch">
@@ -18,7 +20,7 @@
         "
         id="switch1"
       >
-        <h1 class="def-fixed-right-margin">Заголовок</h1>
+        <h2 class="def-fixed-right-margin">Заголовок</h2>
       </div>
       <nav class="stack-row stack-end stack-cross-stretch dominant-section">
         <a class="navbut stack-column stack-center" href="index.html">
@@ -56,7 +58,7 @@
       </nav>
     </header>
     <main class="stack-row dominant-section stack-cross-stretch">
-      <aside class="side-bg note-font-style">
+      <aside class="side-bg note-font-style one-fifth-by-def">
         <p class="def-fixed-margin">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
@@ -69,7 +71,7 @@
           sequi nesciunt.
         </p>
       </aside>
-      <div class="stack-column">
+      <div class="stack-column four-fifth-by-def">
         <aside class="annotation-bg note-font-style def-fixed-padding">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
@@ -79,7 +81,7 @@
         <article class="stack-row main-el-bg dominant-section">
           <div
             class="
-              four-fifth-by-def
+              two-third-by-def
               def-fixed-padding
               stack-column stack-cross-center
             "
@@ -93,20 +95,20 @@
 
                 <input
                   type="radio"
-                  value="csharp"
+                  value="C#"
                   id="csharpMain"
                   name="mainlang"
                 />
                 <label for="csharpMain">C#</label>
                 <br />
 
-                <input type="radio" value="cpp" id="cppMain" name="mainlang" />
+                <input type="radio" value="C++" id="cppMain" name="mainlang" />
                 <label for="cppMain">C/C++</label>
                 <br />
 
                 <input
                   type="radio"
-                  value="java"
+                  value="Java"
                   id="javaMain"
                   name="mainlang"
                 />
@@ -115,7 +117,7 @@
 
                 <input
                   type="radio"
-                  value="python"
+                  value="Python"
                   id="pythonMain"
                   name="mainlang"
                 />
@@ -124,20 +126,25 @@
 
                 <input
                   type="radio"
-                  value="javascript"
+                  value="JavaScript"
                   id="javascriptMain"
                   name="mainlang"
                 />
                 <label for="javascriptMain">Javascript</label>
                 <br />
 
-                <input type="radio" value="asm" id="asmMain" name="mainlang" />
-                <label for="asmMain">Assembler</label>
+                <input
+                  type="radio"
+                  value="Assembly"
+                  id="asmMain"
+                  name="mainlang"
+                />
+                <label for="asmMain">Assembly</label>
                 <br />
 
                 <input
                   type="radio"
-                  value="other"
+                  value="Other"
                   id="otherMain"
                   name="mainlang"
                 />
@@ -154,7 +161,7 @@
 
                 <input
                   type="checkbox"
-                  value="lisp"
+                  value="LISP"
                   id="lispUsed"
                   name="usedlang"
                 />
@@ -163,7 +170,7 @@
 
                 <input
                   type="checkbox"
-                  value="pascal"
+                  value="Pascal"
                   id="pascalUsed"
                   name="usedlang"
                 />
@@ -172,7 +179,7 @@
 
                 <input
                   type="checkbox"
-                  value="brainfuck"
+                  value="Brainfuck"
                   id="brainfuckUsed"
                   name="usedlang"
                 />
@@ -181,7 +188,7 @@
 
                 <input
                   type="checkbox"
-                  value="basic"
+                  value="Basic"
                   id="basicUsed"
                   name="usedlang"
                 />
@@ -190,7 +197,7 @@
 
                 <input
                   type="checkbox"
-                  value="fortran"
+                  value="Fortran"
                   id="fortranUsed"
                   name="usedlang"
                 />
@@ -199,7 +206,7 @@
 
                 <input
                   type="checkbox"
-                  value="asm"
+                  value="Assembly"
                   id="asmUsed"
                   name="usedlang"
                 />
@@ -211,7 +218,7 @@
                 <legend>
                   What color do you most associate your main language with?
                 </legend>
-                <input type="color" />
+                <input name="color" type="color" />
               </fieldset>
 
               <fieldset>
@@ -219,7 +226,7 @@
                   The person universally considered the first programmer in
                   history?
                 </legend>
-                <select>
+                <select name="firstProg">
                   <option value="ada">Ada Lovelace</option>
                   <option value="alan">Alan Turing</option>
                   <option value="albert">Albert Einstein</option>
@@ -231,22 +238,34 @@
           </div>
 
           <aside
-            class="side-bg note-font-style def-fixed-padding one-fifth-by-def"
+            class="
+              side-bg
+              def-fixed-padding
+              one-third-by-def
+              stack-cross-stretch stack-column
+              def-fixed-vmargin-between-children
+            "
           >
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus
-            error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis
-            unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed
-            ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
+            <fieldset>
+              <legend>Total participants</legend>
+              <input type="text" id="participantsCount" disabled />
+            </fieldset>
+            <div class="light-scheme-bg chart-container">
+              <canvas id="mainLangStats" class="width-by-parent"></canvas>
+            </div>
+            <div class="light-scheme-bg chart-container">
+              <canvas id="usedLangStats" class="width-by-parent"></canvas>
+            </div>
+            <fieldset>
+              <legend>Average language-associated colour</legend>
+              <input id="favColorStats" type="color" />
+            </fieldset>
+            <fieldset class="stack-column stack-cross-stretch">
+              <legend>
+                Correctly answered the question about the first programmer
+              </legend>
+              <meter id="correctFirstProg" min="0" max="1" value="0"></meter>
+            </fieldset>
           </aside>
         </article>
       </div>

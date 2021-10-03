@@ -49,6 +49,10 @@ img {
 
 /* layout rules */
 
+.width-by-parent {
+  width: 100% !important;
+}
+
 .top-sticky {
   top: 0;
   position: sticky;
@@ -101,6 +105,14 @@ img {
   flex-basis: 20%;
 }
 
+.one-third-by-def {
+  flex-basis: 33%;
+}
+
+.two-third-by-def {
+  flex-basis: 67%;
+}
+
 /* font rules */
 
 .note-font-style {
@@ -141,6 +153,14 @@ img {
   margin: 0 var(--def-fixed-indent) 0 0;
 }
 
+.def-fixed-hmargin-between-children > * {
+  margin: 0 0 0 var(--def-fixed-indent);
+}
+
+.def-fixed-vmargin-between-children > * {
+  margin: var(--def-fixed-indent) 0 0 0;
+}
+
 .minor-fixed-margin {
   margin: var(--minor-fixed-indent);
 }
@@ -151,6 +171,10 @@ img {
 
 .minor-fixed-right-margin {
   margin: 0 var(--minor-fixed-indent) 0 0;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .def-fixed-padding {
