@@ -17,14 +17,14 @@
     "stylelint-config-strict-scss": "^0.5.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "lint -- --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint:style": "stylelint \"src/**/*.+(scss|css|svelte)\"",
     "lint:style:fix": "stylelint \"src/**/*.+(scss|css|svelte)\" --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks"
   },
   "repository": {
     "type": "git",
