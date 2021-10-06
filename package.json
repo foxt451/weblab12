@@ -6,6 +6,8 @@
   "dependencies": {
     "eslint-plugin-sonarjs": "^0.10.0",
     "firebase": "^9.1.1",
+    "firebase-tools": "^9.19.0",
+    "jquery": "^3.6.0",
     "prettier": "^2.4.1"
   },
   "devDependencies": {
