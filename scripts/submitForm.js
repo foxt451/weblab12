@@ -34,17 +34,17 @@ const submitForm = {
   },
 };
 
-document.getElementById('correctResponse').visibility = hidden;
-document.getElementById('incorrectResponse').visibility = hidden;
+document.getElementById('correctResponse').style.visibility = 'hidden';
+document.getElementById('incorrectResponse').style.visibility = 'hidden';
 
 submitForm
   .submitData()
   .then(() => {
     getAnalysis();
-    document.getElementById('correctResponse').visibility = visible;
-    document.getElementById('incorrectResponse').visibility = hidden;
+    document.getElementById('correctResponse').style.visibility = 'visible';
+    document.getElementById('incorrectResponse').style.visibility = 'hidden';
   })
   .catch(() => {
-    document.getElementById('incorrectResponse').visibility = visible;
-    document.getElementById('correctResponse').visibility = hidden;
+    document.getElementById('incorrectResponse').style.visibility = 'visible';
+    document.getElementById('correctResponse').style.visibility = 'hidden';
   });
