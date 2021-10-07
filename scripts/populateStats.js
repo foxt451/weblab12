@@ -1,5 +1,5 @@
-import { getData } from '/scripts/statsFunctions.js';
-import { activateSpinners, deactivateSpinners } from '/scripts/spinner.js';
+import { getData } from './statsFunctions.js';
+import { activateSpinners, deactivateSpinners } from './scripts/spinner.js';
 
 // test data
 //const statsData = {

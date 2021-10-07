@@ -1,4 +1,4 @@
-import { addData, getAnalysis } from '/scripts/statsFunctions.js';
+import { addData, getAnalysis } from './statsFunctions.js';
 
 const submitForm = {
   getFormData() {
