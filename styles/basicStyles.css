@@ -55,6 +55,7 @@ img {
 
 .top-sticky {
   top: 0;
+  z-index: 9000;
   position: sticky;
 }
 

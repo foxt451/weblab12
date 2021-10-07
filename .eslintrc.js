@@ -11,5 +11,7 @@ module.exports = {
   rules: {
     'arrow-parens': 'off',
     'no-undef': 'off',
+    'import/no-unresolved': 'off',
+    'no-prototype-builtins': 'off',
   },
 };

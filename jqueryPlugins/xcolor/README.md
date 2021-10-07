@@ -1,14 +1,11 @@
-jQuery xcolor Plugin
-====================
+# jQuery xcolor Plugin
 
-Description
------------
+## Description
+
 The jQuery xcolor plugin is an extensive library for color manipulation.
 
+## Calculating Colors
 
-
-Calculating Colors
----
 ```javascript
 // Calculate a grey level color value
 $.xcolor.greyfilter('#c00');
@@ -22,34 +19,30 @@ $.xcolor.opacity('#f00', 'lightgrey', 0.69);
 
 and many more! [Check out the full documentation!](http://www.xarg.org/project/jquery-color-plugin-xcolor/)
 
-Colorizing Text
-----
+## Colorizing Text
+
 ```javascript
-$(".foo").colorize("burntsienna", "blue", function() {
-   // Return a value between 0 and 1, indicating a gradient level between "burntsienna" and "blue"
-   return Math.random();
+$('.foo').colorize('burntsienna', 'blue', function () {
+  // Return a value between 0 and 1, indicating a gradient level between "burntsienna" and "blue"
+  return Math.random();
 });
 ```
 
-
-CSS Hook
------
+## CSS Hook
 
 The color parser implements a CSS hook. Using a random color is now as easy as
 
 ```javascript
 $('h1').css('background', 'rand');
-
 ```
 
+# Further examples and documentation
 
-Further examples and documentation
-==========================
 For further details and code examples take a look at the demonstration and documentation page on:
 
 http://www.xarg.org/project/jquery-color-plugin-xcolor/
 
-License
-======
+# License
+
 Copyright (c) 2014, [Robert Eisele](http://www.xarg.org/)
 Dual licensed under the MIT or GPL Version 2 licenses.
