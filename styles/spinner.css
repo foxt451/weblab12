@@ -26,6 +26,14 @@
   display: none;
 }
 
+.loaderdependent-reverse-inactive {
+  visibility: visible;
+}
+
+.loaderdependent-reverse-active {
+  visibility: hidden;
+}
+
 .loaderdependentinactive {
   visibility: hidden;
 }

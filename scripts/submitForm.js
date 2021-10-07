@@ -34,10 +34,17 @@ const submitForm = {
   },
 };
 
+document.getElementById('correctResponse').visibility = hidden;
+document.getElementById('incorrectResponse').visibility = hidden;
+
 submitForm
   .submitData()
   .then(() => {
     getAnalysis();
-    history.go(-1);
+    document.getElementById('correctResponse').visibility = visible;
+    document.getElementById('incorrectResponse').visibility = hidden;
   })
-  .catch(() => history.go(-1));
+  .catch(() => {
+    document.getElementById('incorrectResponse').visibility = visible;
+    document.getElementById('correctResponse').visibility = hidden;
+  });
