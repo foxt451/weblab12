@@ -20,11 +20,11 @@ const submitForm = {
       firstProg: $_GET['firstProg'],
     };
     function isEmptyOrSpaces(str) {
-      return str === null || str.match(/^ *$/) !== null;
+      return str === null || str.match(/^\s*$/) !== null;
     }
     if (
       $_GET.hasOwnProperty('email') &&
-      !isEmptyOrSpaces(Object.keys($_GET['email']))
+      !isEmptyOrSpaces(Object.keys($_GET['email'])[0])
     ) {
       data.email = $_GET['email'];
     }
