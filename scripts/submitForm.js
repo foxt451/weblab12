@@ -19,7 +19,13 @@ const submitForm = {
       color: $_GET['color'],
       firstProg: $_GET['firstProg'],
     };
-    if ($_GET.hasOwnProperty('email')) {
+    function isEmptyOrSpaces(str) {
+      return str === null || str.match(/^ *$/) !== null;
+    }
+    if (
+      $_GET.hasOwnProperty('email') &&
+      !isEmptyOrSpaces(Object.keys($_GET['email']))
+    ) {
       data.email = $_GET['email'];
     }
     return data;
@@ -31,6 +37,7 @@ const submitForm = {
       })
       .catch((err) => {
         console.log(err);
+        throw err;
       });
   },
 };
@@ -50,7 +57,6 @@ submitForm
   })
   .catch(() => {
     console.log(1);
-
     deactivateSpinners();
     document.getElementById('incorrectResponse').style.visibility = 'visible';
     document.getElementById('correctResponse').style.visibility = 'hidden';
