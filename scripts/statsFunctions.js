@@ -18,10 +18,7 @@ const region = 'us-central1';
 const functions = getFunctions(app, region);
 const addAnswer = httpsCallable(functions, 'addAnswer');
 export function addData(msg) {
-  return addAnswer(msg).then((result) => {
-    const data = result.data;
-    return data;
-  });
+  return addAnswer(msg);
 }
 
 const getAnswers = httpsCallable(functions, 'getAnswers');

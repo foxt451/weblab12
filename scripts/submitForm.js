@@ -1,4 +1,5 @@
 import { addData, getAnalysis } from './statsFunctions.js';
+import { activateSpinners, deactivateSpinners } from './spinner.js';
 
 const submitForm = {
   getFormData() {
@@ -37,14 +38,17 @@ const submitForm = {
 document.getElementById('correctResponse').style.visibility = 'hidden';
 document.getElementById('incorrectResponse').style.visibility = 'hidden';
 
+activateSpinners();
 submitForm
   .submitData()
   .then(() => {
+    deactivateSpinners();
     getAnalysis();
     document.getElementById('correctResponse').style.visibility = 'visible';
     document.getElementById('incorrectResponse').style.visibility = 'hidden';
   })
   .catch(() => {
+    deactivateSpinners();
     document.getElementById('incorrectResponse').style.visibility = 'visible';
     document.getElementById('correctResponse').style.visibility = 'hidden';
   });
