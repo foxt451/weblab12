@@ -42,12 +42,15 @@ activateSpinners();
 submitForm
   .submitData()
   .then(() => {
+    console.log(1);
     deactivateSpinners();
     getAnalysis();
     document.getElementById('correctResponse').style.visibility = 'visible';
     document.getElementById('incorrectResponse').style.visibility = 'hidden';
   })
   .catch(() => {
+    console.log(1);
+
     deactivateSpinners();
     document.getElementById('incorrectResponse').style.visibility = 'visible';
     document.getElementById('correctResponse').style.visibility = 'hidden';
