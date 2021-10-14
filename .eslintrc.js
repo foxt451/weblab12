@@ -13,5 +13,8 @@ module.exports = {
     'no-undef': 'off',
     'import/no-unresolved': 'off',
     'no-prototype-builtins': 'off',
+    quotes: 'off',
+    indent: 'off',
+    'operator-linebreak': 'off',
   },
 };
