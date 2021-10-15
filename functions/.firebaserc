@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "weblab-976b8"
-  }
+    "default": "weblab-976b8",
+    "weblab": "weblab-976b8"
+  },
+  "targets": {}
 }

@@ -1,19 +1,10 @@
 const functions = require('firebase-functions');
-const nodemailer = require('nodemailer');
-require('cors')({ origin: true });
 
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: '...@gmail.com',
-    pass: '...',
-  },
-});
+const sendgrid = require('@sendgrid/mail');
+sendgrid.setApiKey(functions.config().sendgrid.key);
 
 function validateAnswer(answer, answerStats) {
   console.log(answer);
@@ -49,30 +40,29 @@ function validateAnswer(answer, answerStats) {
   return true;
 }
 
-const answerStats = {
-  participants: 0,
-  mainlang: {
-    Other: 0,
-    JavaScript: 0,
-    Python: 0,
-    Assembly: 0,
-    Java: 0,
-    'C++': 0,
-    'C#': 0,
-  },
-  usedlang: {
-    Assembly: 0,
-    Fortran: 0,
-    Basic: 0,
-    Brainfuck: 0,
-    Pascal: 0,
-    LISP: 0,
-  },
-  color: [],
-  firstProgCorrectness: 0,
-};
-
 exports.addAnswer = functions.https.onCall((data) => {
+  const answerStats = {
+    participants: 0,
+    mainlang: {
+      Other: 0,
+      JavaScript: 0,
+      Python: 0,
+      Assembly: 0,
+      Java: 0,
+      'C++': 0,
+      'C#': 0,
+    },
+    usedlang: {
+      Assembly: 0,
+      Fortran: 0,
+      Basic: 0,
+      Brainfuck: 0,
+      Pascal: 0,
+      LISP: 0,
+    },
+    color: [],
+    firstProgCorrectness: 0,
+  };
   if (!validateAnswer(data, answerStats)) {
     throw 'invalid answer';
   }
@@ -87,39 +77,61 @@ exports.addAnswer = functions.https.onCall((data) => {
 });
 
 exports.getAnswers = functions.https.onCall(async () => {
+  console.log(functions.config().mailing.sender);
+  console.log(functions.config().mailing.pass);
+
   answers = await admin.firestore().collection('answers').get();
   console.log('answers without doc mapping', answers.docs);
   answers = answers.docs.map((doc) => doc.data());
   console.log('answers with doc mapping', answers);
   let correctAnswers = 0;
+  const answerStats = {
+    participants: 0,
+    mainlang: {
+      Other: 0,
+      JavaScript: 0,
+      Python: 0,
+      Java: 0,
+      'C++': 0,
+      'C#': 0,
+    },
+    usedlang: {
+      Assembly: 0,
+      Fortran: 0,
+      Basic: 0,
+      Brainfuck: 0,
+      Pascal: 0,
+      LISP: 0,
+    },
+    color: [],
+    firstProgCorrectness: 0,
+  };
 
-  const answerStatsCopy = JSON.parse(JSON.stringify(answerStats));
   answers.forEach((answer) => {
-    if (!validateAnswer(answer, answerStatsCopy)) {
+    if (!validateAnswer(answer, answerStats)) {
       console.log('not validated', answer);
       return false;
     }
-    answerStatsCopy.participants++;
+    answerStats.participants++;
     mainLangs = Object.entries(answer['mainlang']);
     for (mainLang of mainLangs) {
-      answerStatsCopy.mainlang[mainLang[0]]++;
+      answerStats.mainlang[mainLang[0]]++;
     }
     usedLangs = Object.entries(answer['usedlang']);
     for (usedLang of usedLangs) {
-      answerStatsCopy.usedlang[usedLang[0]]++;
+      answerStats.usedlang[usedLang[0]]++;
     }
-    answerStatsCopy.color.push(Object.keys(answer['color'])[0]);
+    answerStats.color.push(Object.keys(answer['color'])[0]);
     if (answer['firstProg']['ada'] === true) correctAnswers++;
     return true;
   });
-  console.log(answerStatsCopy);
-  if (answerStatsCopy.participants !== 0) {
-    answerStatsCopy.firstProgCorrectness =
-      correctAnswers / answerStatsCopy.participants;
+  if (answerStats.participants !== 0) {
+    answerStats.firstProgCorrectness =
+      correctAnswers / answerStats.participants;
   } else {
-    answerStatsCopy.firstProgCorrectness = 0;
+    answerStats.firstProgCorrectness = 0;
   }
-  return answerStatsCopy;
+  return answerStats;
 });
 
 const mainlangComment = {
@@ -129,6 +141,7 @@ const mainlangComment = {
   JavaScript: 'You language is perfect for web development!',
   Python: 'Python is great for data science and analysis!',
   Java: 'Great language that can work on all kinds of machines!',
+  Assembly: 'A very rare choice! Perfect choice for embedded!',
   'C++': 'A truly powerful language with superior performance!',
   'C#':
     'An elegant language constantly developing itself.' +
@@ -136,49 +149,39 @@ const mainlangComment = {
 };
 
 const usedlangComment =
-  'Congratulations on getting to use at least one of' +
-  ' not-so-popular-nowadays languages! Such experience is' +
-  ' never going to harm!';
+  'Congratulations on getting to use at least one of ' +
+  'not-so-popular-nowadays languages! Such experience is never going to harm!';
 const noUsedlangComment =
-  "You didn't you any of the specified languages.. Try" +
-  ' them! They all are cool!';
+  "You didn't you any of the specified languages. Try them! They all are cool!";
 const correctComment =
   'Wow! It is a well-known fact, but anyway, you nailed it!';
 const incorrectComment =
-  "Hey! You didn't guess, but it's never late to learn: " +
-  'the first known programmer was Ada Lovelace.';
+  "Hey! You didn't guess, but it's never late to learn: the" +
+  ' first known programmer was Ada Lovelace.';
 
 exports.getAnalysis = functions.firestore
   .document('answers/{answerId}')
   .onCreate((snap) => {
     if (snap.data().hasOwnProperty('email')) {
-      const text = `<h1>Your analysis!</h1>
-     <p> <b>Main language: </b>${
-       mainlangComment[Object.keys(snap.data().mainlang)[0]]
-     } </p>
-     <p> <b>Rarely-used languages: </b>${
-       Object.keys(snap.data().usedlang).length !== 0
-         ? usedlangComment
-         : noUsedlangComment
-     }
-     <p> <b>First programmer: </b>${
-       Object.keys(snap.data().firstProg)[0] === 'ada'
-         ? correctComment
-         : incorrectComment
-     }`;
-      const mailOptions = {
-        from: `...@gmail.com`,
+      const msg = {
+        from: functions.config().mailing.sender,
         to: Object.keys(snap.data().email)[0],
-        subject: 'Programming experience analysis',
-        html: text,
+        templateId: functions.config().sendgrid.template,
+        dynamic_template_data: {
+          mainlang: Object.keys(snap.data().mainlang)[0],
+          mainlangcomment:
+            mainlangComment[Object.keys(snap.data().mainlang)[0]],
+          usedlangcomment:
+            Object.keys(snap.data().usedlang).length !== 0
+              ? usedlangComment
+              : noUsedlangComment,
+          firstprogcomment:
+            Object.keys(snap.data().firstProg)[0] === 'ada'
+              ? correctComment
+              : incorrectComment,
+        },
       };
-      return transporter.sendMail(mailOptions, (error) => {
-        if (error) {
-          console.log(error);
-          return;
-        }
-        console.log('Sent!');
-      });
+      return sendgrid.send(msg);
     }
     return 'Not sent!';
   });

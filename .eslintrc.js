@@ -15,6 +15,7 @@ module.exports = {
     'no-prototype-builtins': 'off',
     quotes: 'off',
     indent: 'off',
+    camelcase: 'off',
     'operator-linebreak': 'off',
   },
 };
