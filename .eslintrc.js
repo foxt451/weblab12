@@ -8,5 +8,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'arrow-parens': 'off',
+    'no-undef': 'off',
+    'import/no-unresolved': 'off',
+    'no-prototype-builtins': 'off',
+    quotes: 'off',
+    indent: 'off',
+    camelcase: 'off',
+    'operator-linebreak': 'off',
+  },
 };
