@@ -1,0 +1,26 @@
+﻿:root {
+  --form-bg: rgb(245 183 255);
+}
+
+form {
+  padding: var(--def-fixed-indent);
+  background: var(--light-scheme-color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--def-border-radius);
+}
+
+form > * {
+  margin: var(--minor-fixed-indent) 0 var(--minor-fixed-indent) 0;
+}
+
+input[type='submit'] {
+  font-size: var(--def-font-size);
+  margin: auto;
+  display: block;
+  padding: var(--minor-fixed-indent);
+}
+
+fieldset {
+  border-color: var(--dark-scheme-color);
+  border-width: 1px;
+}

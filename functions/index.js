@@ -40,29 +40,30 @@ function validateAnswer(answer, answerStats) {
   return true;
 }
 
-exports.addAnswer = functions.https.onCall((data) => {
-  const answerStats = {
+const answerStats = {
     participants: 0,
     mainlang: {
-      Other: 0,
-      JavaScript: 0,
-      Python: 0,
-      Assembly: 0,
-      Java: 0,
-      'C++': 0,
-      'C#': 0,
+        Other: 0,
+        JavaScript: 0,
+        Python: 0,
+        Assembly: 0,
+        Java: 0,
+        'C++': 0,
+        'C#': 0,
     },
     usedlang: {
-      Assembly: 0,
-      Fortran: 0,
-      Basic: 0,
-      Brainfuck: 0,
-      Pascal: 0,
-      LISP: 0,
+        Assembly: 0,
+        Fortran: 0,
+        Basic: 0,
+        Brainfuck: 0,
+        Pascal: 0,
+        LISP: 0,
     },
     color: [],
     firstProgCorrectness: 0,
-  };
+};
+
+exports.addAnswer = functions.https.onCall((data) => {
   if (!validateAnswer(data, answerStats)) {
     throw 'invalid answer';
   }
@@ -85,53 +86,33 @@ exports.getAnswers = functions.https.onCall(async () => {
   answers = answers.docs.map((doc) => doc.data());
   console.log('answers with doc mapping', answers);
   let correctAnswers = 0;
-  const answerStats = {
-    participants: 0,
-    mainlang: {
-      Other: 0,
-      JavaScript: 0,
-      Python: 0,
-      Java: 0,
-      'C++': 0,
-      'C#': 0,
-    },
-    usedlang: {
-      Assembly: 0,
-      Fortran: 0,
-      Basic: 0,
-      Brainfuck: 0,
-      Pascal: 0,
-      LISP: 0,
-    },
-    color: [],
-    firstProgCorrectness: 0,
-  };
+  const answerStatsClone = JSON.parse(JSON.stringify(answerStats));
 
   answers.forEach((answer) => {
     if (!validateAnswer(answer, answerStats)) {
       console.log('not validated', answer);
       return false;
     }
-    answerStats.participants++;
+    answerStatsClone.participants++;
     mainLangs = Object.entries(answer['mainlang']);
     for (mainLang of mainLangs) {
-      answerStats.mainlang[mainLang[0]]++;
+      answerStatsClone.mainlang[mainLang[0]]++;
     }
     usedLangs = Object.entries(answer['usedlang']);
     for (usedLang of usedLangs) {
-      answerStats.usedlang[usedLang[0]]++;
+      answerStatsClone.usedlang[usedLang[0]]++;
     }
-    answerStats.color.push(Object.keys(answer['color'])[0]);
+    answerStatsClone.color.push(Object.keys(answer['color'])[0]);
     if (answer['firstProg']['ada'] === true) correctAnswers++;
     return true;
   });
-  if (answerStats.participants !== 0) {
-    answerStats.firstProgCorrectness =
-      correctAnswers / answerStats.participants;
+  if (answerStatsClone.participants !== 0) {
+    answerStatsClone.firstProgCorrectness =
+        correctAnswers / answerStatsClone.participants;
   } else {
-    answerStats.firstProgCorrectness = 0;
+      answerStatsClone.firstProgCorrectness = 0;
   }
-  return answerStats;
+    return answerStatsClone;
 });
 
 const mainlangComment = {
