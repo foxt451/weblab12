@@ -42,8 +42,25 @@ const submitForm = {
   },
 };
 
-document.getElementById('correctResponse').style.visibility = 'hidden';
-document.getElementById('incorrectResponse').style.visibility = 'hidden';
+function changeVisibility(elements, visibility) {
+  for (const el of elements) {
+    if (visibility) {
+      el.classList.remove('invisible');
+    } else {
+      el.classList.add('invisible');
+    }
+  }
+}
+
+function changeResponseVisibility(correctVisibility, incorrectVisibility) {
+  const correctElements = document.getElementsByClassName('correctResponse');
+  const incorrectElements =
+    document.getElementsByClassName('incorrectResponse');
+  changeVisibility(correctElements, correctVisibility);
+  changeVisibility(incorrectElements, incorrectVisibility);
+}
+
+changeResponseVisibility(false, false);
 
 activateSpinners();
 submitForm
@@ -52,12 +69,10 @@ submitForm
     console.log(1);
     deactivateSpinners();
     getAnalysis();
-    document.getElementById('correctResponse').style.visibility = 'visible';
-    document.getElementById('incorrectResponse').style.visibility = 'hidden';
+    changeResponseVisibility(true, false);
   })
   .catch(() => {
     console.log(1);
     deactivateSpinners();
-    document.getElementById('incorrectResponse').style.visibility = 'visible';
-    document.getElementById('correctResponse').style.visibility = 'hidden';
+    changeResponseVisibility(false, true);
   });

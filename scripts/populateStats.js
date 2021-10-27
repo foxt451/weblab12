@@ -41,7 +41,10 @@ function initData(data) {
   if (data.color.length >= 2) {
     data.color = data.color.reduce((a, b) => $.xcolor.average(a, b).getHex());
   }
-  document.getElementById('participantsCount').value = data.participants;
+
+  for (const el of document.getElementsByClassName('participantsCount')) {
+    el.value = data.participants;
+  }
   console.log(data);
 
   const mainlangEntries = sortByValues(data.mainlang);
@@ -76,7 +79,9 @@ function initData(data) {
     },
   };
 
-  new Chart(document.getElementById('mainLangStats'), mainLangConfig);
+  for (const el of document.getElementsByClassName('mainLangStats')) {
+    new Chart(el, mainLangConfig);
+  }
 
   // init usedLang chart
   const usedlangEntries = sortByValues(data.usedlang);
@@ -121,8 +126,15 @@ function initData(data) {
     },
   };
 
-  new Chart(document.getElementById('usedLangStats'), usedLangConfig);
+  for (const el of document.getElementsByClassName('usedLangStats')) {
+    new Chart(el, usedLangConfig);
+  }
 
-  document.getElementById('favColorStats').value = data.color;
-  document.getElementById('correctFirstProg').value = data.firstProgCorrectness;
+  for (const el of document.getElementsByClassName('favColorStats')) {
+    el.value = data.color;
+  }
+
+  for (const el of document.getElementsByClassName('correctFirstProg')) {
+    el.value = data.firstProgCorrectness;
+  }
 }

@@ -41,26 +41,26 @@ function validateAnswer(answer, answerStats) {
 }
 
 const answerStats = {
-    participants: 0,
-    mainlang: {
-        Other: 0,
-        JavaScript: 0,
-        Python: 0,
-        Assembly: 0,
-        Java: 0,
-        'C++': 0,
-        'C#': 0,
-    },
-    usedlang: {
-        Assembly: 0,
-        Fortran: 0,
-        Basic: 0,
-        Brainfuck: 0,
-        Pascal: 0,
-        LISP: 0,
-    },
-    color: [],
-    firstProgCorrectness: 0,
+  participants: 0,
+  mainlang: {
+    Other: 0,
+    JavaScript: 0,
+    Python: 0,
+    Assembly: 0,
+    Java: 0,
+    'C++': 0,
+    'C#': 0,
+  },
+  usedlang: {
+    Assembly: 0,
+    Fortran: 0,
+    Basic: 0,
+    Brainfuck: 0,
+    Pascal: 0,
+    LISP: 0,
+  },
+  color: [],
+  firstProgCorrectness: 0,
 };
 
 exports.addAnswer = functions.https.onCall((data) => {
@@ -108,11 +108,11 @@ exports.getAnswers = functions.https.onCall(async () => {
   });
   if (answerStatsClone.participants !== 0) {
     answerStatsClone.firstProgCorrectness =
-        correctAnswers / answerStatsClone.participants;
+      correctAnswers / answerStatsClone.participants;
   } else {
-      answerStatsClone.firstProgCorrectness = 0;
+    answerStatsClone.firstProgCorrectness = 0;
   }
-    return answerStatsClone;
+  return answerStatsClone;
 });
 
 const mainlangComment = {
