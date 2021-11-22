@@ -93,6 +93,14 @@ img {
   display: flex;
   align-items: center;
 }
+.stack-cross-start {
+  display: flex;
+  align-items: start;
+}
+
+.align-self-center {
+  align-self: center;
+}
 
 .dominant-section {
   flex-grow: 1;
@@ -148,6 +156,14 @@ img {
 
 .def-fixed-left-margin {
   margin: 0 0 0 var(--def-fixed-indent);
+}
+
+.def-fixed-top-margin {
+  margin: var(--def-fixed-indent) 0 0 0;
+}
+
+.def-fixed-bot-margin {
+  margin: 0 0 var(--def-fixed-indent) 0;
 }
 
 .def-fixed-right-margin {
