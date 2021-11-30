@@ -79,6 +79,10 @@ img {
   justify-content: center;
 }
 
+.rounded {
+  border-radius: 10px;
+}
+
 .stack-start {
   display: flex;
   justify-content: start;

@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/basicStyles.css" />
     <link rel="stylesheet" href="styles/formStyles.css" />
+    <link rel="stylesheet" href="styles/spinner.css" />
+    <script src="scripts/populateTodos.js" type="module" defer></script>
+    <script src="scripts/addTodo.js" type="module" defer></script>
     <title>TODO</title>
   </head>
   <body class="stack-column stack-cross-stretch">
@@ -94,7 +97,10 @@
             "
           >
             <!-- TODOS -->
-            <form name="todo" class="stack-column def-fixed-padding">
+            <form
+              name="todo"
+              class="stack-column def-fixed-padding def-fixed-margin"
+            >
               <h3>Add TODO</h3>
               <label for="usernameAdd">Username:</label>
               <input
@@ -110,18 +116,43 @@
                 id="taskAdd"
                 class="def-fixed-bot-margin"
               ></textarea>
+              <button
+                name="addTodo"
+                class="loaderdependent stack-center"
+                type="button"
+              >
+                Add
+              </button>
+              <div
+                class="
+                  loader
+                  loaderinactive
+                  loader-def-size
+                  align-self-center
+                  loader-minor-size
+                "
+              ></div>
             </form>
-            <div class="stack-row def-fixed-margin stack-center">
-              <div class="stack-column">
-                <label for="usernameInp"
-                  >Username <i>(leave empty to see all todos)</i>:</label
-                >
-                <input id="usernameInp" class="minor-fixed-margin" />
+            <div class="stack-column def-fixed-margin">
+              <label for="usernameInp"
+                >Username <i>(leave empty to see all todos)</i>:</label
+              >
+              <input id="usernameInp" class="minor-fixed-margin" />
+              <div class="todoContainer stack-column stack-cross-stretch">
+                <template id="todoTemplate">
+                  <div
+                    class="
+                      light-scheme-bg
+                      minor-fixed-padding
+                      rounded
+                      stack-column
+                    "
+                  >
+                    <b class="taskTitle def-fixed-bot-margin">Title</b>
+                    <span class="taskText">Task task task....</span>
+                  </div>
+                </template>
               </div>
-              <template id="todoTemplate">
-                <h4>Title</h4>
-                <span>Task task task....</span>
-              </template>
             </div>
           </div>
 
