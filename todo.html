@@ -138,17 +138,30 @@
                 >Username <i>(leave empty to see all todos)</i>:</label
               >
               <input id="usernameInp" class="minor-fixed-margin" />
-              <div class="todoContainer stack-column stack-cross-stretch">
+              <div
+                class="
+                  todoContainer
+                  stack-column stack-cross-stretch
+                  minor-fixed-vmargin-between-children
+                "
+              >
                 <template id="todoTemplate">
                   <div
                     class="
                       light-scheme-bg
                       minor-fixed-padding
                       rounded
-                      stack-column
+                      stack-column stack-cross-start
                     "
                   >
-                    <b class="taskTitle def-fixed-bot-margin">Title</b>
+                    <span>
+                      <b class="taskTitle def-fixed-bot-margin"
+                        ><label for="taskCheck">Title</label></b
+                      >
+                      <input id="taskCheck" type="checkbox" />
+                    </span>
+                    <i class="taskUsername"></i>
+
                     <span class="taskText">Task task task....</span>
                   </div>
                 </template>

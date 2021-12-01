@@ -178,6 +178,14 @@ img {
   margin: 0 0 0 var(--def-fixed-indent);
 }
 
+.minor-fixed-vmargin-between-children > * {
+  margin: var(--minor-fixed-indent) 0 0 0;
+}
+
+.minor-fixed-hmargin-between-children > * {
+  margin: 0 0 0 var(--minor-fixed-indent);
+}
+
 .def-fixed-vmargin-between-children > * {
   margin: var(--def-fixed-indent) 0 0 0;
 }
@@ -264,4 +272,8 @@ img {
 
 .invisible {
   visibility: hidden;
+}
+
+.collapsed {
+  visibility: collapse;
 }

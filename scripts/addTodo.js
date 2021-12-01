@@ -1,4 +1,5 @@
 import { activateSpinners, deactivateSpinners } from './spinner.js';
+import { getResponse } from './hasura.js';
 
 todo.addTodo.addEventListener('click', addTodo);
 
@@ -8,12 +9,6 @@ async function addTodo() {
   const text = todo.task.value;
   await addTodoWithData(title, text, username);
 }
-
-const endpoint = 'https://singular-cheetah-74.hasura.app/v1/graphql';
-const headers = {
-  'content-type': 'application/json',
-  'x-hasura-role': 'user',
-};
 
 async function addTodoWithData(title, text, username) {
   // try get user with specified username
@@ -27,16 +22,6 @@ async function addTodoWithData(title, text, username) {
   }
   await addTodoWithId(title, text, userId);
   deactivateSpinners();
-}
-
-async function getResponse(body) {
-  const request = {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(body),
-  };
-  const response = await fetch(endpoint, request);
-  return response.json();
 }
 
 const addTaskMutation = `
