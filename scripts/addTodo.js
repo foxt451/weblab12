@@ -12,16 +12,25 @@ async function addTodo() {
 
 async function addTodoWithData(title, text, username) {
   // try get user with specified username
-  activateSpinners();
-  const users = await tryGetUserId(username);
-  let userId;
-  if (users.length > 0) {
-    userId = users[0].id;
-  } else {
-    userId = await addUser(username);
+  activateSpinners('addingForm');
+  try {
+    const users = await tryGetUserId(username);
+    let userId;
+    if (users.length > 0) {
+      userId = users[0].id;
+    } else {
+      userId = await addUser(username);
+    }
+    await addTodoWithId(title, text, userId);
+    const addedTaskEvent = new CustomEvent('addedTask', {
+      detail: { username },
+    });
+    document.dispatchEvent(addedTaskEvent);
+  } catch (e) {
+    alert(e[0].message);
+  } finally {
+    deactivateSpinners('addingForm');
   }
-  await addTodoWithId(title, text, userId);
-  deactivateSpinners();
 }
 
 const addTaskMutation = `
@@ -55,7 +64,6 @@ async function addUser(username) {
     query: addUserMutation,
     variables: { username },
   };
-
   const data = await getResponse(json);
   return data.data.insert_users_one.id; // new id
 }

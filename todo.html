@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="styles/basicStyles.css" />
     <link rel="stylesheet" href="styles/formStyles.css" />
     <link rel="stylesheet" href="styles/spinner.css" />
+    <link rel="stylesheet" href="styles/todo.css" />
     <script src="scripts/populateTodos.js" type="module" defer></script>
     <script src="scripts/addTodo.js" type="module" defer></script>
     <title>TODO</title>
   </head>
   <body class="stack-column stack-cross-stretch">
-    <header class="top-sticky bg-fixed-el stack-row">
+    <header class="top-sticky bg-fixed-el stack-row stack-wrap">
       <div
         class="
           light-scheme-bg
@@ -23,7 +24,13 @@
       >
         <h2 class="def-fixed-right-margin">Заголовок</h2>
       </div>
-      <nav class="stack-row stack-end stack-cross-stretch dominant-section">
+      <nav
+        class="
+          stack-row stack-end stack-cross-stretch
+          dominant-section
+          stack-wrap
+        "
+      >
         <a
           class="navbut minor-fixed-padding stack-column stack-center"
           href="index.html"
@@ -67,7 +74,7 @@
         </a>
       </nav>
     </header>
-    <main class="stack-row dominant-section stack-cross-stretch">
+    <main class="stack-row dominant-section stack-cross-stretch stack-wrap">
       <aside class="side-bg note-font-style one-fifth-by-def">
         <p class="def-fixed-margin">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -88,12 +95,12 @@
           ab illo inventore veritatis et quasi architecto beatae vitae dicta
           sunt explicabo.
         </aside>
-        <article class="stack-row main-el-bg dominant-section">
+        <article class="stack-row main-el-bg dominant-section stack-wrap">
           <div
             class="
               four-fifth-by-def
               def-fixed-padding
-              stack-row stack-cross-start
+              stack-row stack-cross-start stack-wrap
             "
           >
             <!-- TODOS -->
@@ -118,7 +125,7 @@
               ></textarea>
               <button
                 name="addTodo"
-                class="loaderdependent stack-center"
+                class="loaderdependent stack-center addingForm"
                 type="button"
               >
                 Add
@@ -130,6 +137,7 @@
                   loader-def-size
                   align-self-center
                   loader-minor-size
+                  addingForm
                 "
               ></div>
             </form>
@@ -138,6 +146,20 @@
                 >Username <i>(leave empty to see all todos)</i>:</label
               >
               <input id="usernameInp" class="minor-fixed-margin" />
+              <button class="align-self-center tasksSearchButton">
+                Search
+              </button>
+              <div
+                class="
+                  loader
+                  loaderinactive
+                  loader-def-size
+                  align-self-center
+                  loader-minor-size
+                  minor-fixed-margin
+                  todosPlace
+                "
+              ></div>
               <div
                 class="
                   todoContainer
@@ -148,17 +170,15 @@
                 <template id="todoTemplate">
                   <div
                     class="
+                      todoItem
                       light-scheme-bg
                       minor-fixed-padding
-                      rounded
                       stack-column stack-cross-start
                     "
                   >
                     <span>
-                      <b class="taskTitle def-fixed-bot-margin"
-                        ><label for="taskCheck">Title</label></b
-                      >
-                      <input id="taskCheck" type="checkbox" />
+                      <input class="taskCheck" type="checkbox" />
+                      <b class="taskTitle def-fixed-bot-margin">Title</b>
                     </span>
                     <i class="taskUsername"></i>
 
@@ -176,7 +196,7 @@
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
-            <img src="imgs/cat3.jpg" class="img-block big-img" />
+            <img src="imgs/cat3.jpg" class="img-block big-img avg-min-img" />
           </aside>
         </article>
       </div>

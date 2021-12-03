@@ -11,5 +11,10 @@ export async function getResponse(body) {
     body: JSON.stringify(body),
   };
   const response = await fetch(endpoint, request);
-  return response.json();
+  const json = await response.json();
+  console.log(json);
+  if (json.hasOwnProperty('errors')) {
+    throw json.errors;
+  }
+  return json;
 }
