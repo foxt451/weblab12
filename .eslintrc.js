@@ -14,7 +14,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'no-prototype-builtins': 'off',
     quotes: 'off',
-    'comma-dangle': '0ff',
+    'comma-dangle': 'off',
     indent: 'off',
     camelcase: 'off',
     'operator-linebreak': 'off',
