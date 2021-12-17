@@ -1,0 +1,13 @@
+.slideshow-container {
+  display: flex;
+  overflow-x: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-height: 50vh;
+  overflow-y: visible;
+}
+
+.slide {
+  flex-shrink: 0;
+  height: 100%;
+}
