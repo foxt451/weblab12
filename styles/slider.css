@@ -1,56 +1,61 @@
 .slideshow-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-width: 85vw;
 }
 
 .slide {
-  flex-shrink: 0;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input[name='tabs'] {
   display: none;
 }
 
-.slideshow-container > div {
+.slideshow-container > section > div {
   display: none;
 }
 
-#tab1:checked ~ .tab1,
-#tab2:checked ~ .tab2,
-#tab3:checked ~ .tab3 {
-  display: block;
+.numbertext,
+.text {
+  color: var(--dark-scheme-color);
+  font-weight: bold;
+  margin: var(--minor-fixed-indent);
+}
+
+nav .tab1,
+nav .tab2,
+nav .tab3 {
+  display: flex;
+  justify-content: center;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3 {
+  display: flex;
+}
+
+.slide img {
+  max-height: 50vh;
+  max-width: 100%;
 }
 
 #tab1:checked ~ nav .tab1,
 #tab2:checked ~ nav .tab2,
 #tab3:checked ~ nav .tab3 {
   color: var(--fixed-elements-background);
-}
-
-#tab1:checked ~ nav .tab1,
-#tab2:checked ~ nav .tab2,
-#tab3:checked ~ nav .tab3 {
   position: relative;
   font-size: larger;
   background: var(--light-scheme-color);
 }
 
-#tab1:checked ~ nav .tab1 label,
-#tab2:checked ~ nav .tab2 label,
-#tab3:checked ~ nav .tab3 label {
-  position: relative;
-  font-size: larger;
-  background: var(--light-scheme-color);
-}
-
-/* ul li {
-  background: var(--active-link-color);
-} */
-
-#tab1:checked ~ nav .tab1 label::after,
-#tab2:checked ~ nav .tab2 label::after,
-#tab3:checked ~ nav .tab3 label::after {
+#tab1:checked ~ nav .tab1::after,
+#tab2:checked ~ nav .tab2::after,
+#tab3:checked ~ nav .tab3::after {
   content: '';
   display: block;
   width: 100%;
@@ -64,16 +69,26 @@ input[name='tabs'] {
 ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+ul label {
+  flex: 1;
 }
 
 ul li {
   font-size: large;
-  flex: 1;
   padding: var(--def-fixed-indent);
   text-align: center;
 }
 
 .slideshow-container nav {
-  display: inline-flex;
+  display: flex;
+  /* max-width: 100%; */
   align-self: center;
+}
+
+.slideshow-container label:hover {
+  background: var(--annotating-element-background);
 }

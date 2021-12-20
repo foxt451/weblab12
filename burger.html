@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/basicStyles.css" />
     <link rel="stylesheet" href="styles/slider.css" />
+    <link rel="stylesheet" href="styles/menu.css" />
     <title>Burgers</title>
   </head>
 
@@ -99,60 +100,59 @@
         </aside>
         <article class="stack-row main-el-bg dominant-section stack-wrap">
           <div class="four-fifth-by-def">
-            <div class="slideshow-container">
+            <div class="slideshow-container two-third-by-def def-fixed-margin">
               <input type="radio" checked name="tabs" id="tab1" />
               <input type="radio" checked name="tabs" id="tab2" />
               <input type="radio" checked name="tabs" id="tab3" />
               <nav>
                 <ul>
-                  <li class="tab1">
-                    <label for="tab1">Big burger</label>
-                  </li>
-                  <li class="tab2">
-                    <label for="tab2">Ketchup burger</label>
-                  </li>
-                  <li class="tab3">
-                    <label for="tab3">Small burger</label>
-                  </li>
+                  <label class="tab1" for="tab1">
+                    <li>Big burger</li>
+                  </label>
+                  <label class="tab2" for="tab2">
+                    <li>Ketchup burger</li>
+                  </label>
+                  <label class="tab3" for="tab3">
+                    <li>Small burger</li>
+                  </label>
                 </ul>
               </nav>
-              <!-- Full-width images with number and caption text -->
-              <div class="slide tab1">
-                <div class="numbertext">1 / 3</div>
-                <img src="imgs/fatburger.jpg" style="width: 100%" />
-                <div class="text">Big tasty burger</div>
-              </div>
+              <section>
+                <!-- Full-width images with number and caption text -->
+                <div class="slide tab1">
+                  <div class="numbertext">1 / 3</div>
+                  <img src="imgs/fatburger.jpg" />
+                  <div class="text">Big tasty burger</div>
+                </div>
 
-              <div class="slide tab2">
-                <div class="numbertext">2 / 3</div>
-                <img src="imgs/ketchupburger.jpg" style="width: 100%" />
-                <div class="text">Burger with ketchup</div>
-              </div>
+                <div class="slide tab2">
+                  <div class="numbertext">2 / 3</div>
+                  <img src="imgs/ketchupburger.jpg" />
+                  <div class="text">Burger with ketchup</div>
+                </div>
 
-              <div class="slide tab3">
-                <div class="numbertext">3 / 3</div>
-                <img src="imgs/miniburger.jpg" style="width: 100%" />
-                <div class="text">Small burger</div>
-              </div>
+                <div class="slide tab3">
+                  <div class="numbertext">3 / 3</div>
+                  <img src="imgs/miniburger.jpg" />
+                  <div class="text">Small burger</div>
+                </div>
+              </section>
             </div>
           </div>
-          <aside
-            class="side-bg note-font-style def-fixed-padding one-fifth-by-def"
-          >
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus
-            error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Sed ut perspiciatis
-            unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Sed
-            ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
+          <aside class="side-bg menu def-fixed-padding one-fifth-by-def">
+            <label for="sub1"> &#8801; Menu </label>
+            <input type="checkbox" name="menu-buttons" id="sub1" />
+            <div class="menuitem">
+              <label for="sub11"> &#8801; Menu </label>
+              <input type="checkbox" name="menu-buttons" id="sub11" />
+              <div class="menuitem">Hello</div>
+              <label for="sub12"> &#8801; Menu </label>
+              <input type="checkbox" name="menu-buttons" id="sub12" />
+              <div class="menuitem">Hello</div>
+              <label for="sub13"> &#8801; Menu </label>
+              <input type="checkbox" name="menu-buttons" id="sub13" />
+              <div class="menuitem">Hello</div>
+            </div>
           </aside>
         </article>
       </div>

@@ -1,0 +1,19 @@
+.menu-button:focus .menuitem {
+  display: flex;
+}
+
+.menu-button:focus {
+  background-color: aqua;
+}
+
+.menuitem {
+  display: none;
+}
+
+input[name='menu-buttons']:checked + .menuitem {
+  display: block;
+}
+
+input[name='menu-buttons'] {
+  display: none;
+}
