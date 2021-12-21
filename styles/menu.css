@@ -1,13 +1,13 @@
-.menu-button:focus .menuitem {
-  display: flex;
-}
-
-.menu-button:focus {
-  background-color: aqua;
-}
-
 .menuitem {
   display: none;
+  margin: var(--def-fixed-indent);
+}
+
+@media screen and (max-width: 350px) {
+  .menuitem {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 input[name='menu-buttons']:checked + .menuitem {
@@ -16,4 +16,28 @@ input[name='menu-buttons']:checked + .menuitem {
 
 input[name='menu-buttons'] {
   display: none;
+}
+
+.menu label {
+  display: block;
+  margin-top: var(--def-fixed-indent);
+  margin-bottom: var(--def-fixed-indent);
+}
+
+.menu label:hover {
+  color: var(--fixed-elements-background);
+}
+
+.menu .price {
+  font-style: italic;
+  margin-right: 0;
+  float: right;
+  color: var(--active-link-bgcolor);
+}
+
+.menu {
+  background-color: var(--light-scheme-color);
+  padding: var(--minor-fixed-indent);
+  border-radius: var(--def-border-radius);
+  border: var(--border-width) solid var(--border-color);
 }

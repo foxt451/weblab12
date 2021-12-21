@@ -66,18 +66,18 @@ nav .tab3 {
   background: var(--fixed-elements-background);
 }
 
-ul {
+.slideshow-container ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   align-content: stretch;
 }
 
-ul label {
+.slideshow-container ul label {
   flex: 1;
 }
 
-ul li {
+.slideshow-container ul li {
   font-size: large;
   padding: var(--def-fixed-indent);
   text-align: center;
