@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/basicStyles.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css"
+    />
+    <script defer src="scripts/auth.js" type="module"></script>
+    <title>Auth</title>
+  </head>
+
+  <body class="stack-column">
+    <header class="top-sticky bg-fixed-el stack-row stack-wrap">
+      <div
+        class="
+          light-scheme-bg
+          minor-fixed-margin minor-fixed-padding
+          stack-row stack-start
+        "
+      >
+        <h2 class="def-fixed-right-margin">Заголовок</h2>
+      </div>
+      <nav
+        class="
+          stack-row stack-end stack-cross-stretch
+          dominant-section
+          stack-wrap
+        "
+      >
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="index.html"
+        >
+          <span> Головна </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="page2.html"
+        >
+          <span> Page 2 </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="page3.html"
+        >
+          <span> Page 3 </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="page4.html"
+        >
+          <span> Page 4 </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="form.html"
+        >
+          <span> Page Actions </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="todo.html"
+        >
+          <span> TODO </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="burger.html"
+        >
+          <span> Burger </span>
+        </a>
+        <a
+          class="
+            navbut
+            minor-fixed-padding
+            stack-column stack-center
+            activelink
+          "
+          href="auth.html"
+        >
+          <span> Auth </span>
+        </a>
+      </nav>
+    </header>
+    <main class="stack-row dominant-section stack-cross-stretch stack-wrap">
+      <aside class="side-bg note-font-style one-fifth-by-def">
+        <p class="def-fixed-margin">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo.
+        </p>
+        <p class="def-fixed-margin">
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+          fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+          sequi nesciunt.
+        </p>
+      </aside>
+      <div class="stack-column four-fifth-by-def">
+        <aside class="annotation-bg def-fixed-padding note-font-style">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo.
+        </aside>
+        <article class="stack-row main-el-bg dominant-section stack-wrap">
+          <div class="four-fifth-by-def"></div>
+          <aside
+            class="
+              side-bg
+              note-font-style
+              def-fixed-padding
+              one-fifth-by-def
+              authContainer
+            "
+          ></aside>
+        </article>
+      </div>
+    </main>
+    <footer class="stack-row stack-end minor-fixed-padding bg-fixed-el">
+      <div class="minor-fixed-paddinglight-scheme-bg stack-row">
+        <h2 class="def-fixed-right-margin">Кінець</h2>
+      </div>
+    </footer>
+  </body>
+</html>
