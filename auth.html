@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css"
     />
+    <link type="text/css" rel="stylesheet" href="styles/spinner.css" />
     <script defer src="scripts/auth.js" type="module"></script>
     <title>Auth</title>
   </head>
@@ -119,6 +120,15 @@
               <h3>Your status:</h3>
               <input type="text" autocomplete="off" class="statusInp" />
               <button class="statusUpdBtn">Save</button>
+            </section>
+            <div>
+              <div
+                class="loader loaderinactive loader-def-size minor-fixed-margin"
+              ></div>
+            </div>
+            <section class="opinfo collapsed def-fixed-margin">
+              <div class="opmsg"></div>
+              <button class="opclose minor-fixed-margin">Got it!</button>
             </section>
           </div>
           <aside

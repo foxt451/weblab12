@@ -1,3 +1,5 @@
+import { activateSpinners, deactivateSpinners } from './spinner.js';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBkYyRxeUtyOODdYKs-q5WbbtM9rsK9dnY',
   authDomain: 'weblab-976b8.firebaseapp.com',
@@ -16,30 +18,54 @@ document.querySelector('.logoutBtn').addEventListener('click', () => {
   authService
     .signOut()
     .then(() => {
+      hideInfo();
       document.querySelector('.statusInp').value = '';
     })
     .catch((err) => {
-      alert(`Error happened: ${err}`);
+      showInfo(`Error happened: ${err}`);
     });
 });
 
+window.onoffline = checkforOnline;
+window.ononline = checkforOnline;
+
+function checkforOnline() {
+  console.log(window.navigator.onLine);
+  if (window.navigator.onLine) {
+    console.log('online');
+    hideInfo();
+  } else {
+    console.log('offline');
+    showInfo('Your network is currently disabled!');
+  }
+}
+
+const updateSuccessMsgTimeout = 3000;
 document.querySelector('.statusUpdBtn').addEventListener('click', () => {
   const user = authService.currentUser;
   if (user) {
     const db = firebase.firestore();
+    activateSpinners();
+    checkforOnline();
     db.collection('statuses')
       .doc(user.uid)
       .set({
         status: document.querySelector('.statusInp').value,
       })
       .then(() => {
-        alert('Updated successfully!');
+        deactivateSpinners();
+        showInfo('Updated successfully!');
+        setTimeout(hideInfo, updateSuccessMsgTimeout);
       })
       .catch((err) => {
-        alert(`Error happened: ${err}`);
+        deactivateSpinners();
+        showInfo(`Error happened: ${err}`);
       });
   }
 });
+
+const opclose = document.querySelector('.opclose');
+opclose.addEventListener('click', hideInfo);
 
 function showForLoggedOut() {
   document.querySelector('.userinfo').classList.add('collapsed');
@@ -49,6 +75,17 @@ function showForLoggedOut() {
 function showForLoggenIn() {
   document.querySelector('.userinfo').classList.remove('collapsed');
   document.querySelector('.logoutBtn').classList.remove('collapsed');
+}
+
+function showInfo(msg) {
+  const opmsg = document.querySelector('.opmsg');
+  opmsg.innerText = msg;
+  const opinfo = document.querySelector('.opinfo');
+  opinfo.classList.remove('collapsed');
+}
+
+function hideInfo() {
+  document.querySelector('.opinfo').classList.add('collapsed');
 }
 
 const ui = new firebaseui.auth.AuthUI(authService);
@@ -61,10 +98,13 @@ authService.onAuthStateChanged((user) => {
     const uid = user.uid;
     document.querySelector('.username').innerText = user.displayName;
     const db = firebase.firestore();
+    activateSpinners();
     db.collection('statuses')
       .doc(uid)
       .get()
       .then((doc) => {
+        deactivateSpinners();
+        hideInfo();
         if (doc.exists) {
           document.querySelector('.statusInp').value = doc.data().status;
         } else {
@@ -72,7 +112,8 @@ authService.onAuthStateChanged((user) => {
         }
       })
       .catch((err) => {
-        alert(`Error happened: ${err}`);
+        deactivateSpinners();
+        showInfo(`Error happened: ${err}`);
       });
   } else {
     showForLoggedOut();
