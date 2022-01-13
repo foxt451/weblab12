@@ -1,7 +1,37 @@
 import { activateSpinners, deactivateSpinners } from './spinner.js';
 import { getResponse } from './hasura.js';
 
-todo.addTodo.addEventListener('click', addTodo);
+todo.addTodo.addEventListener('click', () => {
+  addTodo().catch((err) => showInfo(`Error ocurred: ${err}`));
+});
+
+window.onoffline = checkforOnline;
+window.ononline = checkforOnline;
+
+function checkforOnline() {
+  console.log(window.navigator.onLine);
+  if (window.navigator.onLine) {
+    console.log('online');
+    hideInfo();
+  } else {
+    console.log('offline');
+    showInfo('Your network is currently disabled!');
+  }
+}
+
+function showInfo(msg) {
+  const opmsg = document.querySelector('.opmsg');
+  opmsg.innerText = msg;
+  const opinfo = document.querySelector('.opinfo');
+  opinfo.classList.remove('collapsed');
+}
+
+function hideInfo() {
+  document.querySelector('.opinfo').classList.add('collapsed');
+}
+
+const opclose = document.querySelector('.opclose');
+opclose.addEventListener('click', hideInfo);
 
 async function addTodo() {
   const username = todo.username.value;
@@ -27,7 +57,7 @@ async function addTodoWithData(title, text, username) {
     });
     document.dispatchEvent(addedTaskEvent);
   } catch (e) {
-    alert(e[0].message);
+    if (window.navigator.onLine) showInfo(`Error ocurred: ${e[0].message}`);
   } finally {
     deactivateSpinners('addingForm');
   }
