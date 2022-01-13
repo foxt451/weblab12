@@ -1,6 +1,32 @@
 import { activateSpinners, deactivateSpinners } from './spinner.js';
 import { getResponse } from './hasura.js';
 
+window.onoffline = checkforOnline;
+window.ononline = checkforOnline;
+
+checkforOnline();
+function checkforOnline() {
+  console.log(window.navigator.onLine);
+  if (window.navigator.onLine) {
+    console.log('online');
+    hideInfo();
+  } else {
+    console.log('offline');
+    showInfo('Your network is currently disabled!');
+  }
+}
+
+function showInfo(msg) {
+  const opmsg = document.querySelector('.opmsg');
+  opmsg.innerText = msg;
+  const opinfo = document.querySelector('.opinfo');
+  opinfo.classList.remove('collapsed');
+}
+
+function hideInfo() {
+  document.querySelector('.opinfo').classList.add('collapsed');
+}
+
 const allTasks = `
 query AllTasks {
   tasks(order_by: {completed: asc, user: {username: asc}}) {
@@ -45,7 +71,9 @@ const inp = document.querySelector('#usernameInp');
 // it will replace the relevant results, even though they are for
 // the more early entered username
 let lastUsername = inp.value;
-populateTodos(inp.value);
+populateTodos(inp.value).catch((err) => {
+  if (window.navigator.onLine) showInfo(`Error ocurred: ${err}`);
+});
 function onButClick() {
   lastUsername = inp.value;
   populateTodos(inp.value);
@@ -57,7 +85,9 @@ for (const but of document.querySelectorAll('.tasksSearchButton')) {
 document.addEventListener('addedTask', (e) => {
   if (e.detail.username === inp.value || !inp.value) {
     lastUsername = inp.value;
-    populateTodos(inp.value);
+    populateTodos(inp.value).catch((err) => {
+      if (window.navigator.onLine) showInfo(`Error ocurred: ${err}`);
+    });
   }
 });
 
@@ -109,7 +139,8 @@ async function getTodos(username) {
     const data = await getResponse(json);
     return data.data.tasks;
   } catch (e) {
-    alert(e[0].message);
+    console.log(window.navigator.onLine);
+    if (window.navigator.onLine) showInfo(`Error ocurred: ${e[0].message}`);
     return [];
   }
 }
@@ -124,8 +155,8 @@ function getTodo(todo) {
   }
   const checkbox = clone.querySelector('.taskCheck');
   checkbox.checked = todo.completed;
-  checkbox.addEventListener('change', () =>
-    onCheckboxChange(todo.id, checkbox.checked)
+  checkbox.addEventListener('change', (e) =>
+    onCheckboxChange(e, checkbox, todo.id, checkbox.checked)
   );
   if (todo.hasOwnProperty('user') && todo.user.hasOwnProperty('username')) {
     for (const author of clone.querySelectorAll('.taskUsername')) {
@@ -135,12 +166,24 @@ function getTodo(todo) {
   return clone;
 }
 
-function onCheckboxChange(todoId, isChecked) {
+function onCheckboxChange(e, checkbox, todoId, isChecked) {
   console.log(todoId, isChecked);
   const json = {
     operationName: 'Complete',
     query: updateCompletedMutation,
     variables: { completed: isChecked, id: todoId },
   };
-  getResponse(json);
+  checkbox.checked = !isChecked;
+  e.preventDefault();
+  e.stopPropagation();
+  activateSpinners('todosPlace');
+  getResponse(json)
+    .then(() => {
+      console.log('meh');
+      checkbox.checked = isChecked;
+    })
+    .catch((err) => {
+      if (window.navigator.onLine) showInfo(`Error ocurred: ${err}`);
+    })
+    .finally(() => deactivateSpinners('todosPlace'));
 }
