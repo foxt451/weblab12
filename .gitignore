@@ -2,3 +2,5 @@ functions/node_modules
 .vs/
 node_modules/
 **/*.log
+**/firestore.indexes.json
+.firebase/
