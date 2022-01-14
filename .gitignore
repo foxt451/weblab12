@@ -1,0 +1,5 @@
+functions/
+!functions/functions/index.js
+.vs/
+node_modules/
+jqueryPlugins/
