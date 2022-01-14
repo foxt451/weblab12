@@ -1,0 +1,61 @@
+﻿:root {
+  --loader-def-size: 5vw;
+  --loader-minor-size: 2vw;
+  --loader-def-border: 5px;
+  --loader-minor-border: 3px;
+}
+
+.loader {
+  border-color: #f3f3f3;
+  border-top-color: #3498db;
+  border-style: solid;
+  border-top-style: solid; /* Blue */
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.loader-def-size {
+  border-width: var(--loader-def-border);
+  width: var(--loader-def-size);
+  padding-top: var(--loader-def-size);
+}
+
+.loader-minor-size {
+  border-width: var(--loader-minor-border);
+  width: var(--loader-minor-size);
+  padding-top: var(--loader-minor-size);
+}
+
+.loaderactive {
+  display: block;
+}
+
+.loaderinactive {
+  display: none;
+}
+
+.loaderdependent-reverse-inactive {
+  visibility: visible;
+}
+
+.loaderdependent-reverse-active {
+  visibility: hidden;
+}
+
+.loaderdependentinactive {
+  visibility: hidden;
+}
+
+.loaderdependentactive {
+  visibility: visible;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

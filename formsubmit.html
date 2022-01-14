@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/basicStyles.css" />
+    <link rel="stylesheet" href="styles/spinner.css" />
+    <script src="scripts/submitForm.js" type="module" defer></script>
     <title>Моя сторінка</title>
   </head>
   <body class="stack-column stack-cross-stretch">
-    <header class="top-sticky bg-fixed-el stack-row stack-wrap">
+    <header class="top-sticky bg-fixed-el stack-row">
       <div
         class="
           light-scheme-bg
@@ -18,13 +20,7 @@
       >
         <h2 class="def-fixed-right-margin">Заголовок</h2>
       </div>
-      <nav
-        class="
-          stack-row stack-end stack-cross-stretch
-          dominant-section
-          stack-wrap
-        "
-      >
+      <nav class="stack-row stack-end stack-cross-stretch dominant-section">
         <a
           class="navbut stack-column stack-center activelink"
           href="index.html"
@@ -75,7 +71,7 @@
         </a>
       </nav>
     </header>
-    <main class="stack-row dominant-section stack-cross-stretch stack-wrap">
+    <main class="stack-row dominant-section stack-cross-stretch">
       <aside class="side-bg note-font-style one-fifth-by-def">
         <p class="def-fixed-margin">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -96,45 +92,27 @@
           ab illo inventore veritatis et quasi architecto beatae vitae dicta
           sunt explicabo.
         </aside>
-        <article class="stack-row main-el-bg dominant-section stack-wrap">
-          <div class="four-fifth-by-def">
-            <p class="def-fixed-margin">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque corrupti quos
-              dolores et quas molestias excepturi sint occaecati cupiditate non
-              provident, similique sunt in culpa qui officia deserunt mollitia
-              animi, id est laborum et dolorum fuga.
-            </p>
-            <p class="def-fixed-margin">
-              Et harum quidem rerum facilis est et expedita distinctio. Nam
-              libero tempore, cum soluta nobis est eligendi optio cumque nihil
-              impedit quo minus id quod maxime placeat facere possimus, omnis
-              voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-              quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-              eveniet ut et voluptates repudiandae sint et molestiae non
-              recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut
-              aut reiciendis voluptatibus maiores alias consequatur aut
-              perferendis doloribus asperiores repellat.
-            </p>
-            <img src="imgs/cat1.jpg" class="img-block big-img" />
-            <p class="def-fixed-margin">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque corrupti quos
-              dolores et quas molestias excepturi sint occaecati cupiditate non
-              provident, similique sunt in culpa qui officia deserunt mollitia
-              animi, id est laborum et dolorum fuga.
-            </p>
-            <p class="def-fixed-margin">
-              Et harum quidem rerum facilis est et expedita distinctio. Nam
-              libero tempore, cum soluta nobis est eligendi optio cumque nihil
-              impedit quo minus id quod maxime placeat facere possimus, omnis
-              voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-              quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-              eveniet ut et voluptates repudiandae sint et molestiae non
-              recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut
-              aut reiciendis voluptatibus maiores alias consequatur aut
-              perferendis doloribus asperiores repellat.
-            </p>
+        <article class="stack-row main-el-bg dominant-section">
+          <div
+            class="
+              four-fifth-by-def
+              def-fixed-padding
+              stack-column stack-center stack-cross-center
+            "
+          >
+            <div>
+              <div class="loader loader-def-size"></div>
+            </div>
+            <h2 class="loaderdependent-reverse">
+              You form is being processed!
+            </h2>
+            <h2 class="invisible correctResponse">Form submitted!</h2>
+            <h2 class="invisible incorrectResponse">
+              Oops! Something went wrong. Try again.
+            </h2>
+            <a href="form.html" class="invisible loaderdependent"
+              ><h3>-> Go Back</h3></a
+            >
           </div>
 
           <aside

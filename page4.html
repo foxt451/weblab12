@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <base href="/weblab12/" />
+    <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/basicStyles.css" />
     <title>My page 4</title>
   </head>
   <body class="stack-column stack-cross-stretch">
-    <header class="top-sticky bg-fixed-el stack-row">
+    <header class="top-sticky bg-fixed-el stack-row stack-wrap">
       <div
         class="
           light-scheme-bg
@@ -16,9 +16,15 @@
           stack-row stack-start
         "
       >
-        <h1 class="def-fixed-right-margin">Заголовок</h1>
+        <h2 class="def-fixed-right-margin">Заголовок</h2>
       </div>
-      <nav class="stack-row stack-end stack-cross-stretch dominant-section">
+      <nav
+        class="
+          stack-row stack-end stack-cross-stretch
+          dominant-section
+          stack-wrap
+        "
+      >
         <a
           class="navbut minor-fixed-padding stack-column stack-center"
           href="index.html"
@@ -48,10 +54,34 @@
         >
           <span> Page 4 </span>
         </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="form.html"
+        >
+          <span> Page Actions </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="todo.html"
+        >
+          <span> TODO </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="burger.html"
+        >
+          <span> Burger </span>
+        </a>
+        <a
+          class="navbut minor-fixed-padding stack-column stack-center"
+          href="auth.html"
+        >
+          <span> Auth </span>
+        </a>
       </nav>
     </header>
-    <main class="stack-row stack-cross-stretch dominant-section">
-      <aside class="side-bg note-font-style">
+    <main class="stack-row stack-cross-stretch dominant-section stack-wrap">
+      <aside class="side-bg note-font-style one-fifth-by-def">
         <p class="def-fixed-margin">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
@@ -64,22 +94,20 @@
           sequi nesciunt.
         </p>
       </aside>
-      <div class="stack-column">
+      <div class="stack-column four-fifth-by-def">
         <aside class="annotation-bg def-fixed-padding note-font-style">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
           ab illo inventore veritatis et quasi architecto beatae vitae dicta
           sunt explicabo.
         </aside>
-        <article class="stack-row main-el-bg dominant-section">
+        <article class="stack-row main-el-bg dominant-section stack-wrap">
           <div class="four-fifth-by-def">
             <h3 class="def-fixed-margin">Cool sites</h3>
-            <img
-              src="imgs/map.png"
-              class="img-block"
-              width="550px"
-              usemap="#sites"
-            />
+            <img src="imgs/map.png" class="img-block avg-img" />
+            <!--width="550px"
+              usemap="#sites"-->
+
             <map name="sites">
               <area
                 href="https://www.google.com/"
@@ -149,7 +177,7 @@
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
-            <img src="imgs/cat3.jpg" class="img-block big-img" />
+            <img src="imgs/cat3.jpg" class="img-block big-img avg-min-img" />
           </aside>
         </article>
       </div>

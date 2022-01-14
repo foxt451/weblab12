@@ -5,9 +5,21 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/basicStyles.css" />
-    <title>My page 3</title>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/spinner.css" />
+    <script defer src="scripts/auth.js" type="module"></script>
+    <title>Auth</title>
   </head>
-  <body class="stack-column stack-cross-stretch">
+
+  <body class="stack-column">
     <header class="top-sticky bg-fixed-el stack-row stack-wrap">
       <div
         class="
@@ -38,12 +50,7 @@
           <span> Page 2 </span>
         </a>
         <a
-          class="
-            navbut
-            minor-fixed-padding
-            stack-column stack-center
-            activelink
-          "
+          class="navbut minor-fixed-padding stack-column stack-center"
           href="page3.html"
         >
           <span> Page 3 </span>
@@ -73,7 +80,12 @@
           <span> Burger </span>
         </a>
         <a
-          class="navbut minor-fixed-padding stack-column stack-center"
+          class="
+            navbut
+            minor-fixed-padding
+            stack-column stack-center
+            activelink
+          "
           href="auth.html"
         >
           <span> Auth </span>
@@ -102,64 +114,39 @@
           sunt explicabo.
         </aside>
         <article class="stack-row main-el-bg dominant-section stack-wrap">
-          <div class="four-fifth-by-def">
-            <h3 class="def-fixed-margin">My favorite languages</h3>
-            <ol>
-              <li>
-                <a href="https://uk.wikipedia.org/wiki/C_Sharp" target="_blank"
-                  >C#</a
-                >
-              </li>
-              <li>
-                <a href="https://uk.wikipedia.org/wiki/Python" target="_blank"
-                  >Python</a
-                >
-              </li>
-              <li>
-                <a href="https://uk.wikipedia.org/wiki/SQL" target="_blank"
-                  >Sql</a
-                >
-              </li>
-              <li>
-                <a href="https://uk.wikipedia.org/wiki/C%2B%2B" target="_blank"
-                  >C++</a
-                >
-              </li>
-            </ol>
-            <p class="def-fixed-margin">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque corrupti quos
-              dolores et quas molestias excepturi sint occaecati cupiditate non
-              provident, similique sunt in culpa qui officia deserunt mollitia
-              animi, id est laborum et dolorum fuga.
-            </p>
-            <p class="def-fixed-margin">
-              Et harum quidem rerum facilis est et expedita distinctio. Nam
-              libero tempore, cum soluta nobis est eligendi optio cumque nihil
-              impedit quo minus id quod maxime placeat facere possimus, omnis
-              voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-              quibusdam et aut officiis debitis aut rerum necessitatibus saepe
-              eveniet ut et voluptates repudiandae sint et molestiae non
-              recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut
-              aut reiciendis voluptatibus maiores alias consequatur aut
-              perferendis doloribus asperiores repellat.
-            </p>
+          <div class="four-fifth-by-def def-fixed-padding">
+            <section class="userinfo collapsed">
+              <h1>Welcome, <span class="username"></span></h1>
+              <h3>Your status:</h3>
+              <input type="text" autocomplete="off" class="statusInp" />
+              <button class="statusUpdBtn">Save</button>
+            </section>
+            <div>
+              <div
+                class="loader loaderinactive loader-def-size minor-fixed-margin"
+              ></div>
+            </div>
+            <section class="opinfo collapsed def-fixed-margin">
+              <div class="opmsg"></div>
+              <button class="opclose minor-fixed-margin">Got it!</button>
+            </section>
           </div>
-
           <aside
-            class="side-bg note-font-style def-fixed-padding one-fifth-by-def"
+            class="
+              side-bg
+              note-font-style
+              def-fixed-padding
+              one-fifth-by-def
+              authContainer
+            "
           >
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
-            <img src="imgs/cat3.jpg" class="img-block big-img avg-min-img" />
+            <button class="logoutBtn collapsed">Log Out</button>
           </aside>
         </article>
       </div>
     </main>
-    <footer class="minor-fixed-padding stack-row stack-end bg-fixed-el">
-      <div class="minor-fixed-padding light-scheme-bg stack-row">
+    <footer class="stack-row stack-end minor-fixed-padding bg-fixed-el">
+      <div class="minor-fixed-paddinglight-scheme-bg stack-row">
         <h2 class="def-fixed-right-margin">Кінець</h2>
       </div>
     </footer>

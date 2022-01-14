@@ -1,0 +1,94 @@
+.slideshow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 85vw;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[name='tabs'] {
+  display: none;
+}
+
+.slideshow-container > section > div {
+  display: none;
+}
+
+.numbertext,
+.text {
+  color: var(--dark-scheme-color);
+  font-weight: bold;
+  margin: var(--minor-fixed-indent);
+}
+
+nav .tab1,
+nav .tab2,
+nav .tab3 {
+  display: flex;
+  justify-content: center;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3 {
+  display: flex;
+}
+
+.slide img {
+  max-height: 50vh;
+  max-width: 100%;
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2,
+#tab3:checked ~ nav .tab3 {
+  color: var(--fixed-elements-background);
+  position: relative;
+  font-size: larger;
+  background: var(--light-scheme-color);
+}
+
+#tab1:checked ~ nav .tab1::after,
+#tab2:checked ~ nav .tab2::after,
+#tab3:checked ~ nav .tab3::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  background: var(--fixed-elements-background);
+}
+
+.slideshow-container ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.slideshow-container ul label {
+  flex: 1;
+}
+
+.slideshow-container ul li {
+  font-size: large;
+  padding: var(--def-fixed-indent);
+  text-align: center;
+}
+
+.slideshow-container nav {
+  display: flex;
+  /* max-width: 100%; */
+  align-self: center;
+}
+
+.slideshow-container label:hover {
+  background: var(--annotating-element-background);
+}
