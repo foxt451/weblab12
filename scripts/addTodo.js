@@ -57,7 +57,10 @@ async function addTodoWithData(title, text, username) {
     });
     document.dispatchEvent(addedTaskEvent);
   } catch (e) {
-    if (window.navigator.onLine) showInfo(`Error ocurred: ${e[0].message}`);
+    console.log(e);
+    if (window.navigator.onLine) {
+      showInfo(`Error ocurred: ${e[0]?.message ?? e}`);
+    }
   } finally {
     deactivateSpinners('addingForm');
   }
